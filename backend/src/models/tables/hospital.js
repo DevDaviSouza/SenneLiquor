@@ -15,11 +15,11 @@ export default class hospital extends Model {
         allowNull: false
       },
       nr_latitude: {
-        type: Datatypes.DOUBLE,
+        type: Datatypes.FLOAT,
         allowNull: false
       },
       nr_longitude: {
-        type: Datatypes.DOUBLE,
+        type: Datatypes.FLOAT,
         allowNull: false
       }
     }, {

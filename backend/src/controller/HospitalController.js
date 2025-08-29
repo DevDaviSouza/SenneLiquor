@@ -15,6 +15,15 @@ endpoints.get("/hospitals", async (req, resp) => {
   }
 })
 
+endpoints.get("/hospitals/coordinates", async (req, resp) => {
+  try {
+    let r = await FindAllCoordinates();
+    resp.send(r);
+  } catch (e) {
+    resp.send({error: e.toString()})
+  }
+})
+
 endpoints.get("/hospitals/:cd_hospital", async (req, resp) => {
   try {
     let cd_hospital = req.params.cd_hospital;
@@ -26,13 +35,6 @@ endpoints.get("/hospitals/:cd_hospital", async (req, resp) => {
   }
 })
 
-endpoints.get("/hospitals/coord", async (req, resp) => {
-  try {
-    let r = await FindAllCoordinates();
-    resp.send(r);
-  } catch (e) {
-    resp.send({error: e.toString()})
-  }
-})
+
 
 export default endpoints;
