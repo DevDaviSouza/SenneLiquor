@@ -1,0 +1,38 @@
+import { Router } from "express";
+import FindAllHospitals from "../service/hospital/FindAllHospitals.js";
+import FindAllCoordinates from "../service/hospital/FindAllCoordinates.js";
+import FindHospital from "../service/hospital/FindHospital.js";
+
+
+const endpoints = Router();
+
+endpoints.get("/hospitals", async (req, resp) => {
+  try {
+    let r = await FindAllHospitals();
+    resp.send(r);
+  } catch (e) {
+    resp.send({error: e.toString()})
+  }
+})
+
+endpoints.get("/hospitals/:cd_hospital", async (req, resp) => {
+  try {
+    let cd_hospital = req.params.cd_hospital;
+    let r = await FindHospital(cd_hospital)
+
+    resp.send(r);
+  } catch (e) {
+    resp.send({error: e.toString()})
+  }
+})
+
+endpoints.get("/hospitals/coord", async (req, resp) => {
+  try {
+    let r = await FindAllCoordinates();
+    resp.send(r);
+  } catch (e) {
+    resp.send({error: e.toString()})
+  }
+})
+
+export default endpoints;
