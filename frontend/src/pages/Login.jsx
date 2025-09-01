@@ -12,7 +12,6 @@ export default function Login() {
 
       console.log(response.data.token);
       
-
       if (response.data.token !== undefined && response.data.token !== null && response.data.token !== "") {
         localStorage.setItem("token", response.data.token);
       }
