@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react"; // ícones do lucide-react
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,11 +13,13 @@ export const HeaderComponent = () => {
       <nav className="hidden md:block text-lg w-3/6 py-3 border-y">
         <ul className="flex justify-around">
           <li className="cursor-pointer hover:text-[#EC6726] transition">
-            Chamados
+            <NavLink to="/tickets">Chamados</NavLink>
+          </li>
+          <li className="cursor-pointer hover:text-[#EC6726] transition">
           </li>
           <li className="cursor-pointer hover:text-[#EC6726] transition">
 
-            Mapa de distribuição dos chamados
+            <NavLink to="/maps">Mapa de distribuição dos chamados</NavLink>
 
           </li>
         </ul>

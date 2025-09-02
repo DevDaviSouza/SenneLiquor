@@ -1,23 +1,17 @@
-import { useState } from "react";
-import { logIn } from "../api/services/LoginService";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const login = async () => {
-    try {
-      const userInfo = { nm_login: email, ds_senha: password };
-      const response = await logIn(userInfo);
+  const { login } = useContext(AuthContext);
 
-      console.log(response.data.token);
-      
-      if (response.data.token !== undefined && response.data.token !== null && response.data.token !== "") {
-        localStorage.setItem("token", response.data.token);
-      }
-    }catch(e) {
-      console.log(e);
-    }
+  const confirmLogin = () => {
+    login(email, password);
+    navigate("/home");
   }
   
   return (
@@ -34,7 +28,7 @@ export default function Login() {
           <input onChange={(e) => setPassword(e.target.value)} className="bg-[#e4e4e4] py-1 rounded-md w-80 px-1 outline-none" type="password" placeholder="Senha" />
        </label>
 
-        <button onClick={() => login()} className="bg-[#ec6726] w-3/4 text-white py-1 rounded-md text-lg mt-5" type="button">Confirmar</button>
+        <button onClick={() => confirmLogin()} className="bg-[#ec6726] w-3/4 text-white py-1 rounded-md text-lg mt-5" type="button">Confirmar</button>
       </form>
     </main>
   )
