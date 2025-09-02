@@ -4,7 +4,6 @@ import { logIn } from "../api/services/LoginService";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
 
   const login = async (email, password) => {
     try {
@@ -13,8 +12,6 @@ export const AuthProvider = ({ children }) => {
 
       if (response.data.token !== undefined && response.data.token !== null && response.data.token !== "" && response.status === 200) {
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", response.data.user.nm_login)
-        setUser(localStorage.getItem("user"));
       }
     } catch (e) {
       console.log(e);
@@ -22,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{login, user}}>
+    <AuthContext.Provider value={{login}}>
       {children}
     </AuthContext.Provider>
   )

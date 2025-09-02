@@ -1,19 +1,11 @@
-import { useNavigate } from "react-router-dom"
 import { HeaderComponent } from "../components/Header"
 import { TicketList } from "../components/TicketList"
-import { useEffect } from "react"
+import useAuth from "../hooks/useAuth"
 
 
 export default function TicketPage() {
-  const navigate = new useNavigate()
   
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-
-    if (!token) {
-      navigate("/")
-    }
-  }, [])
+  useAuth();
   
   return (
     <div>

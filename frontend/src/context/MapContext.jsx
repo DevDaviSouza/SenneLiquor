@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { findCoordinates } from "../api/services/HospitalService";
 import { TicketContext } from "./TicketContext";
-import { Hospital } from "lucide-react";
 
 export const MapContext = createContext();
 

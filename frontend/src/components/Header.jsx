@@ -1,12 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react"; // ícones do lucide-react
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 export const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const {user} = useContext(AuthContext);
 
   return (
     <header className="flex justify-between items-center p-4 border-gray-300 mt-3 relative">
@@ -29,6 +27,7 @@ export const HeaderComponent = () => {
       </nav>
 
       <div className="hidden md:block">
+        <h3 className="text-xl font-bold text-[#EC6726]">Teste Davi Souza Santos</h3>
       </div>
 
       <button
