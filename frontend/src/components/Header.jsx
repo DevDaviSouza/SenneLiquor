@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { Menu, X, LogOut, LogOutIcon } from "lucide-react"; // ícones do lucide-react
-import { Link, NavLink } from "react-router-dom";
+import { Menu, X, LogOutIcon } from "lucide-react"; // ícones do lucide-react
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 

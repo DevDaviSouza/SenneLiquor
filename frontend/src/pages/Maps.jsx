@@ -44,7 +44,7 @@ export default function Maps() {
       <div className="flex flex-col p-8 items-center justify-center">
         <div className="text-2xl font-bold text-primary my-8 text-center">
           <div className='md:text-4xl'>
-            <h1 className='text-primary'>Mapa de distribuição dos chamados</h1>
+            <h1 className='text-[#EC6726]'>Mapa de distribuição dos chamados</h1>
           </div>
         </div>
 
