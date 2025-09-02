@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { logIn } from "../api/services/LoginService";
 
 export const AuthContext = createContext();
@@ -18,8 +18,16 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
+  const logOut = () => {
+    try {
+      localStorage.removeItem("token")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{login}}>
+    <AuthContext.Provider value={{login, logOut}}>
       {children}
     </AuthContext.Provider>
   )

@@ -19,13 +19,14 @@ export default function Login() {
     }
   }
   
+  
   return (
     <main className="w-screen h-screen flex flex-col justify-center items-center gap-8 bg-meu-azul">
       <img src="/assets/images/logo.svg" alt="Senne Liquor" />
 
       <form className="flex flex-col gap-4 justify-center items-center">
-       <label className="flex flex-col text-lg">Email:
-          <input onChange={(e) => setEmail(e.target.value)} className="bg-[#e4e4e4] py-1 rounded-md w-80 px-1 outline-none" type="text" placeholder="Email" />
+       <label className="flex flex-col text-lg">Login:
+          <input onChange={(e) => setEmail(e.target.value)} className="bg-[#e4e4e4] py-1 rounded-md w-80 px-1 outline-none" type="text" placeholder="Login" />
        </label>
 
 

@@ -1,10 +1,20 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react"; // ícones do lucide-react
+import { useContext, useState } from "react";
+import { Menu, X, LogOut, LogOutIcon } from "lucide-react"; // ícones do lucide-react
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderComponent = () => {
+  const navigate = new useNavigate()
   const [isOpen, setIsOpen] = useState(false);
+
+  const {logOut} = useContext(AuthContext)
+
+  const confirmLogOut = () => {
+    logOut()
+    navigate("/")
+    
+  }
 
   return (
     <header className="flex justify-between items-center p-4 border-gray-300 mt-3 relative">
@@ -27,7 +37,7 @@ export const HeaderComponent = () => {
       </nav>
 
       <div className="hidden md:block">
-        <h3 className="text-xl font-bold text-[#EC6726]">Teste Davi Souza Santos</h3>
+        <h3 onClick={confirmLogOut} className="text-xl font-bold text-[#EC6726] cursor-pointer"><LogOutIcon size={28}/></h3>
       </div>
 
       <button

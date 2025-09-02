@@ -12,8 +12,7 @@ import useAuth from '../hooks/useAuth';
 
 function MarkerCluster({ coordinates }) {
   const map = useMap();
-  
-  useAuth();
+  useAuth()
 
   useEffect(() => {
     if (!coordinates || coordinates.length === 0) return;
