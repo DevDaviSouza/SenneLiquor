@@ -3,6 +3,7 @@ import FindAllHospitals from "../service/hospital/FindAllHospitals.js";
 import FindAllCoordinates from "../service/hospital/FindAllCoordinates.js";
 import FindHospital from "../service/hospital/FindHospital.js";
 import { authenticate, authentication } from "../utils/jwt.js";
+import FindCoordinatesById from "../service/hospital/FindCoordinatesById.js";
 
 
 const endpoints = Router();
@@ -19,6 +20,17 @@ endpoints.get("/hospitals", authenticate, async (req, resp) => {
 endpoints.get("/hospitals/coordinates", authenticate, async (req, resp) => {
   try {
     let r = await FindAllCoordinates();
+    
+    resp.send(r);
+  } catch (e) {
+    resp.send({error: e.toString()})
+  }
+})
+
+endpoints.get("/hospitals/coordinates/:id", authenticate, async (req, resp) => {
+  try {
+    let id = req.params.id;
+    let r = await FindCoordinatesById(id);
     
     resp.send(r);
   } catch (e) {

@@ -1,6 +1,18 @@
+import { useEffect } from "react";
 import { HeaderComponent } from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+  const navigate = new useNavigate()
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+
+    if (!token) {
+      navigate("/")
+    }
+  }, [])
+  
   return (
     <div>
       <HeaderComponent />

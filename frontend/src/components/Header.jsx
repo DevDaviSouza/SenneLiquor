@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Menu, X } from "lucide-react"; // ícones do lucide-react
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export const HeaderComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const {user} = useContext(AuthContext);
 
   return (
     <header className="flex justify-between items-center p-4 border-gray-300 mt-3 relative">
@@ -26,9 +29,6 @@ export const HeaderComponent = () => {
       </nav>
 
       <div className="hidden md:block">
-        <h3 className="text-lg text-[#EC6726] font-extrabold">
-          davi.souza.santos
-        </h3>
       </div>
 
       <button
@@ -52,9 +52,6 @@ export const HeaderComponent = () => {
       >
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-bold text-[#EC6726]">Menu</h2>
-          <button onClick={() => setIsOpen(false)}>
-            <X size={24} />
-          </button>
         </div>
 
         <ul className="flex flex-col gap-6 p-6 text-lg">
@@ -62,20 +59,17 @@ export const HeaderComponent = () => {
             className="cursor-pointer hover:text-[#EC6726] transition"
             onClick={() => setIsOpen(false)}
           >
-            Chamados
+            <NavLink to="/tickets">Chamados</NavLink>
           </li>
           <li
             className="cursor-pointer hover:text-[#EC6726] transition"
             onClick={() => setIsOpen(false)}
           >
-            Mapa de distribuição dos chamados
+            <NavLink to="/maps">Mapa de distribuição dos chamados</NavLink>
           </li>
         </ul>
 
         <div className="p-6 border-t mt-auto">
-          <h3 className="text-lg text-[#EC6726] font-extrabold">
-            davi.souza.santos
-          </h3>
         </div>
       </div>
     </header>

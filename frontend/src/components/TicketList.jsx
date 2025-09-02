@@ -1,32 +1,13 @@
-import { BadgePlus } from "lucide-react"
-import { fetchTickets } from "../api/services/TicketService"
-import { useEffect, useState } from "react"
+import { useContext } from "react"
+import { TicketContext } from "../context/TicketContext"
 
 export const TicketList = () => {
-  const [tickets, setTickets] = useState([])
-
-  useEffect(() => {
-    const getTickets = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        console.log(token);
-        
-        const response = await fetchTickets(token);
-        console.log(response.data);
-        
-        setTickets(response.data)
-      } catch (error) {
-        console.error("Erro ao buscar os chamados:", error)
-      } 
-    }
-    getTickets()
-  }, [])
+  const {tickets} = useContext(TicketContext)
   
-
   return (
     <div className="w-7xl  mx-auto">
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse p-4">
+          <table className="w-full border-collapse p-4 overflow-y-scroll ">
             <thead >
               <tr className="flex flex-row items-center justify-between mb-4 text-lg font-light">
                 <th className="w-38">Chamado</th>
@@ -43,13 +24,13 @@ export const TicketList = () => {
               <div className="w-4xl border border-[#9B9B9B]"></div>
             </div>
 
-            <tbody>
+            <tbody className="scroll-auto overflow-scroll  max-h-2/5 ">
               {
                 tickets.length === 0 ?
                   <td colSpan="7" className="text-center text-gray-500">Nenhum chamado disponível</td>
                 :
                 tickets.map((ticket) => (
-                  <tr className="flex flex-row items-center  justify-between my-4 text-md font-light w-full">
+                  <tr className="flex flex-row items-center justify-between my-4 text-md font-light w-full border">
                     <td className="w-38 text-center">{ticket.nr_chamado}</td>
                     <td className="w-38 text-center">{ticket.cd_medico}</td>
                     <td className="w-38 text-center">{ticket.cd_hospital}</td>

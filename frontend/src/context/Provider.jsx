@@ -1,9 +1,15 @@
 import { AuthProvider } from "./AuthContext"
+import { MapProvider } from "./MapContext"
+import { TicketProvider } from "./TicketContext"
 
 const Provider = ({children}) => {
   return(
     <AuthProvider>
-      {children}
+      <TicketProvider>
+        <MapProvider>
+          {children}
+        </MapProvider>
+      </TicketProvider>
     </AuthProvider>
   )
 }

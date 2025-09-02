@@ -21,6 +21,10 @@ endpoints.post("/login", async (req, resp) => {
     let userInfo  = req.body;
     let token = await Login(userInfo)
 
+    if (!token) {
+      resp.status(401)
+    }
+
     resp.send({user: userInfo, token: token})
   } catch (e) {
     resp.send({error: e.toString()})

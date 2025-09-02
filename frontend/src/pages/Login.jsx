@@ -10,8 +10,13 @@ export default function Login() {
   const { login } = useContext(AuthContext);
 
   const confirmLogin = () => {
-    login(email, password);
-    navigate("/home");
+    const token = login(email, password);
+
+    if (token != "" && token != null && token != undefined) {  
+      setTimeout(() => {
+        navigate("/home");
+      }, 1000);
+    }
   }
   
   return (
@@ -28,7 +33,7 @@ export default function Login() {
           <input onChange={(e) => setPassword(e.target.value)} className="bg-[#e4e4e4] py-1 rounded-md w-80 px-1 outline-none" type="password" placeholder="Senha" />
        </label>
 
-        <button onClick={() => confirmLogin()} className="bg-[#ec6726] w-3/4 text-white py-1 rounded-md text-lg mt-5" type="button">Confirmar</button>
+        <button onClick={() => confirmLogin()} className="bg-[#ec6726] hover:bg-amber-800 cursor-pointer w-3/4 text-white py-1 rounded-md text-lg mt-5" type="button">Confirmar</button>
       </form>
     </main>
   )
